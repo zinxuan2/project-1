@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ed">
+  <title>Little Weather — Daily Mood Tracker</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Little Weather home"><span class="wordmark-mark" aria-hidden="true">✳</span> little weather</a>
+      <span class="topbar-note"><span class="status-dot"></span> just for you</span>
+    </header>
+
+    <main>
+      <section class="checkin" aria-labelledby="page-title">
+        <div class="date-line"><span class="date-spark" aria-hidden="true">✳</span><span id="today-label"></span></div>
+        <h1 id="page-title">Your inner<br><em>weather.</em></h1>
+        <p class="intro">No forecast needed. Just notice what’s here.</p>
+
+        <div class="prompt-row">
+          <h2>How are you feeling?</h2>
+          <span class="quiet-label">PICK WHAT FITS</span>
+        </div>
+        <div class="mood-grid" id="mood-grid" role="group" aria-label="Choose your mood"></div>
+
+        <div class="detail-panel" id="detail-panel" aria-live="polite">
+          <div class="intensity-head">
+            <label for="intensity">How strong is that feeling?</label>
+            <output id="intensity-value" for="intensity">3 / 5</output>
+          </div>
+          <input id="intensity" class="intensity-slider" type="range" min="1" max="5" value="3" aria-label="Feeling intensity">
+          <div class="slider-captions"><span>A little</span><span>A lot</span></div>
+          <label class="note-label" for="note">A note to yourself <span>optional</span></label>
+          <textarea id="note" maxlength="280" placeholder="Anything you want to remember about today?" rows="2"></textarea>
+          <div class="form-foot"><span id="char-count">0 / 280</span><span id="save-status" role="status"></span></div>
+          <button class="save-button" id="save-button" type="button" disabled><span>Save today’s check-in</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+          <button class="undo-button" id="undo-button" type="button" hidden><span aria-hidden="true">↶</span> Undo today’s check-in</button>
+        </div>
+      </section>
+
+      <aside class="week-panel" aria-labelledby="week-title">
+        <div class="week-heading">
+          <div>
+            <span class="eyebrow">A LITTLE LOOK BACK</span>
+            <h2 id="week-title">The past week</h2>
+          </div>
+          <span class="week-count" id="week-count">0 <small>of 7</small></span>
+        </div>
+        <p class="week-subtitle">Every kind of day belongs.</p>
+        <div class="week-chart" id="week-chart" aria-label="Mood history for the past seven days"></div>
+        <div class="week-legend"><span class="legend-mark"></span> A check-in, whenever it happened</div>
+        <section class="day-detail" id="day-detail" aria-label="Selected day details">
+          <div class="day-detail-head">
+            <button class="day-nav" id="previous-day" type="button" aria-label="Earlier day">←</button>
+            <p id="day-detail-date" aria-live="polite"></p>
+            <button class="day-nav" id="next-day" type="button" aria-label="Later day">→</button>
+          </div>
+          <div class="day-detail-content" id="day-detail-content" aria-live="polite"></div>
+        </section>
+        <div class="reflection" id="reflection">
+          <span class="reflection-mark" aria-hidden="true">↳</span>
+          <p>Your week is still unfolding.<br><strong>Start with today.</strong></p>
+        </div>
+        <footer class="privacy-note"><span aria-hidden="true">◌</span> Saved on this device in moods.sqlite3.</footer>
+      </aside>
+    </main>
+    <div class="page-end"><span>TAKE IT ONE DAY AT A TIME</span><span>✳</span><span>YOU’RE HERE</span></div>
+  </div>
+</body>
+</html>
